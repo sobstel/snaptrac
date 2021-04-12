@@ -1,17 +1,13 @@
 import * as React from 'react';
-import { Divider, Layout, Text, TopNavigation } from '@ui-kitten/components';
-import ScreenContainer from 'components/ScreenContainer';
+import { Layout, Text, TopNavigation } from '@ui-kitten/components';
+import Screen from 'components/Screen';
 
 export default function SettingsScreen() {
   return (
-    <ScreenContainer>
-      <TopNavigation title="Settings" alignment="center" />
-      <Divider />
-      <Layout
-        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-      >
-        <Text>Settings Screen</Text>
-      </Layout>
-    </ScreenContainer>
+    <Screen
+      topNavigation={<TopNavigation title="Settings" alignment="center" />}
+    >
+      <Text>Settings Screen</Text>
+    </Screen>
   );
 }

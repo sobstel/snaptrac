@@ -9,13 +9,13 @@ import {
 } from '@expo-google-fonts/open-sans';
 /* eslint-enable camelcase */
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as eva from '@eva-design/eva';
-import theme from 'theme';
-import mapping from 'mapping.json';
+import theme from 'theme/theme';
+import themeMapping from 'theme/mapping';
 import {
   IconRegistry,
   ApplicationProvider,
@@ -63,7 +63,7 @@ const BottomTabBar = ({ navigation, state }) => {
 
 const MainTab = createBottomTabNavigator();
 const AppNavigator = () => {
-  const backgroundColor = useBackgroundColor();
+  const backgroundColor = useBackgroundColor(2);
 
   const navigatorTheme = {
     ...DefaultTheme,
@@ -98,8 +98,10 @@ export default function App() {
     <>
       <StatusBar style="light" />
       <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={theme} customMapping={mapping}>
-        <AppNavigator />
+      <ApplicationProvider {...eva} theme={theme} customMapping={themeMapping}>
+        <SafeAreaProvider>
+          <AppNavigator />
+        </SafeAreaProvider>
       </ApplicationProvider>
     </>
   );
