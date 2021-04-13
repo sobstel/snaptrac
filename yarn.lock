@@ -1808,6 +1808,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
+"@react-native-community/netinfo@5.9.7":
+  version "5.9.7"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.9.7.tgz#769c6b306ea6bbaa1c4a3fffdd183d0cfc30ed7e"
+  integrity sha512-NAkkT68oF+M9o6El2xeUqZK7magPjG/tAcEbvCbqyhlh3yElKWnI1e1vpbVvFXzTefy67FwYFWOJqBN6U7Mnkg==
+
 "@react-navigation/bottom-tabs@^5.11.9":
   version "5.11.9"
   resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-5.11.9.tgz#380a97593290a8e278365c5e4d84813e19c8a9c9"
@@ -1959,6 +1964,11 @@
   dependencies:
     invariant "^2.2.4"
     lodash "^4.5.0"
+
+"@use-expo/battery@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@use-expo/battery/-/battery-2.0.0.tgz#15493dc414126f6f066febe505708083092cc128"
+  integrity sha512-JFq4K2TFTI55ENfK0TX2OIs85DAiUwJUJjejW9tDHwA//nZQJyIjLhiSo6EtRDPhVhHDPaURsx4efw8PSMHZGg==
 
 abort-controller@^3.0.0:
   version "3.0.0"
@@ -3647,6 +3657,11 @@ expo-asset@~8.2.1:
     md5-file "^3.2.3"
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
+
+expo-battery@~3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/expo-battery/-/expo-battery-3.1.0.tgz#29643c06a8bda553f72782c5aa0dc107eebfc525"
+  integrity sha512-uOS7jF3Y+J+uVi2vrghNxFtVhMI9J11q4x6ct5NlRxN3ttVQCA7sL1ZDF3lg+r4HebIyKdfwx6tINHdpbfEp3Q==
 
 expo-constants@~9.3.3:
   version "9.3.5"

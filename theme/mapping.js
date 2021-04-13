@@ -15,5 +15,7 @@ export default {
     'text-caption-1-font-family': 'OpenSans_400Regular',
     'text-caption-2-font-family': 'OpenSans_600SemiBold',
     'text-label-font-family': 'OpenSans_800ExtraBold',
+
+    'text-label-font-size': 13,
   },
 };
