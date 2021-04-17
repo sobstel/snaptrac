@@ -51,6 +51,7 @@ const BottomTabBar = ({ navigation, state }) => {
   return (
     <SafeAreaView edges={['bottom']} mode="padding" style={{ backgroundColor }}>
       <BottomNavigation
+        appearance="noIndicator"
         selectedIndex={state.index}
         onSelect={index => navigation.navigate(state.routeNames[index])}
       >
