@@ -1,44 +1,24 @@
-import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import * as Location from 'expo-location';
+import React from 'react';
+// import * as Location from 'expo-location';
 import tw from 'tailwind-rn';
-import { Button, Spinner, Text } from '@ui-kitten/components';
+import { Text } from '@ui-kitten/components';
 import Tile from './Tile';
+import useLocation from '../../hooks/useLocation';
 
-const LoadingIndicator = props => (
-  <View style={tw('justify-center items-center')}>
-    <Spinner size="small" />
-  </View>
-);
+// const LoadingIndicator = props => (
+//   <View style={tw('justify-center items-center')}>
+//     <Spinner size="small" />
+//   </View>
+// );
 
 export default function LocationTile() {
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-  const [permStatus, setPermStatus] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { granted, currentLocation } = useLocation();
 
-  const handleLocationCheck = async () => {
-    const {
-      status,
-      granted,
-    } = await Location.requestForegroundPermissionsAsync();
-
-    setPermStatus(status);
-    if (!granted) {
-      setErrorMsg('Permission to access location was denied');
-      return;
-    }
-
-    setLoading(true);
-    const currentPosition = await Location.getCurrentPositionAsync({});
-    setLocation(currentPosition);
-    setLoading(false);
-  };
-
-  if (errorMsg) {
+  if (granted === false) {
     return (
       <Tile>
-        <Text>ERROR: {errorMsg}</Text>
+        <Text>ERROR: Permission to access location was denied</Text>
       </Tile>
     );
   }
@@ -46,19 +26,7 @@ export default function LocationTile() {
   return (
     <Tile>
       <View style={tw('flex flex-col justify-between')}>
-        <Button
-          onPress={handleLocationCheck}
-          accessoryLeft={loading ? LoadingIndicator : null}
-          disabled={loading}
-        >
-          CHECK
-        </Button>
-        {!loading && permStatus && (
-          <Text>Permissions: {JSON.stringify(permStatus)}</Text>
-        )}
-        {!loading && location && (
-          <Text>Location: {JSON.stringify(location)}</Text>
-        )}
+        {currentLocation && <Text>{JSON.stringify(currentLocation)}</Text>}
       </View>
     </Tile>
   );

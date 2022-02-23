@@ -12,7 +12,6 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as eva from '@eva-design/eva';
 import theme from 'theme/theme';
 import themeMapping from 'theme/mapping';
@@ -42,27 +41,27 @@ const SettingsStackScreen = () => (
   </SettintsStack.Navigator>
 );
 
-const RadioIcon = props => <Icon {...props} name="radio-outline" />;
-const SettingsIcon = props => <Icon {...props} name="settings-2-outline" />;
+// const RadioIcon = props => <Icon {...props} name="radio-outline" />;
+// const SettingsIcon = props => <Icon {...props} name="settings-2-outline" />;
 
-const BottomTabBar = ({ navigation, state }) => {
-  const backgroundColor = useBackgroundColor();
+// const BottomTabBar = ({ navigation, state }) => {
+//   const backgroundColor = useBackgroundColor();
+//
+//   return (
+//     <SafeAreaView edges={['bottom']} mode="padding" style={{ backgroundColor }}>
+//       <BottomNavigation
+//         appearance="noIndicator"
+//         selectedIndex={state.index}
+//         onSelect={index => navigation.navigate(state.routeNames[index])}
+//       >
+//         <BottomNavigationTab icon={RadioIcon} />
+//         <BottomNavigationTab icon={SettingsIcon} />
+//       </BottomNavigation>
+//     </SafeAreaView>
+//   );
+// };
 
-  return (
-    <SafeAreaView edges={['bottom']} mode="padding" style={{ backgroundColor }}>
-      <BottomNavigation
-        appearance="noIndicator"
-        selectedIndex={state.index}
-        onSelect={index => navigation.navigate(state.routeNames[index])}
-      >
-        <BottomNavigationTab icon={RadioIcon} />
-        <BottomNavigationTab icon={SettingsIcon} />
-      </BottomNavigation>
-    </SafeAreaView>
-  );
-};
-
-const MainTab = createBottomTabNavigator();
+const MainStack = createStackNavigator();
 const AppNavigator = () => {
   const backgroundColor = useBackgroundColor(2);
 
@@ -74,12 +73,13 @@ const AppNavigator = () => {
     },
   };
 
+  // <MainTab.Navigator tabBar={props => <BottomTabBar {...props} />}>
   return (
     <NavigationContainer theme={navigatorTheme}>
-      <MainTab.Navigator tabBar={props => <BottomTabBar {...props} />}>
-        <MainTab.Screen name="Me" component={MeStackScreen} />
-        <MainTab.Screen name="Setting" component={SettingsStackScreen} />
-      </MainTab.Navigator>
+      <MainStack.Navigator headerMode="none">
+        <MainStack.Screen name="Me" component={MeStackScreen} />
+        <MainStack.Screen name="Setting" component={SettingsStackScreen} />
+      </MainStack.Navigator>
     </NavigationContainer>
   );
 };

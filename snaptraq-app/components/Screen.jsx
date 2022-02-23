@@ -26,8 +26,8 @@ export default function Screen({ children, topNavigation = null }) {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'start',
-          paddingHorizontal: 15,
-          paddingVertical: 20,
+          // paddingHorizontal: 15,
+          // paddingVertical: 20,
         }}
       >
         {children}

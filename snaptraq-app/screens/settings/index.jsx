@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Layout, Text, TopNavigation } from '@ui-kitten/components';
+import { Text, TopNavigation } from '@ui-kitten/components';
 import Screen from 'components/Screen';
 
 export default function SettingsScreen() {
