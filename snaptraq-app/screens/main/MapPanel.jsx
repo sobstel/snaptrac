@@ -4,7 +4,7 @@ import MapView from 'react-native-maps';
 import tw from 'tailwind-rn';
 
 // todo: it's not tile
-export default function MapTile() {
+export default function MapPanel() {
   return (
     <View style={tw('flex-grow w-full my-2')}>
       <MapView

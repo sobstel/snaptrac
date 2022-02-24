@@ -15,31 +15,25 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as eva from '@eva-design/eva';
 import theme from 'theme/theme';
 import themeMapping from 'theme/mapping';
-import {
-  IconRegistry,
-  ApplicationProvider,
-  BottomNavigation,
-  BottomNavigationTab,
-  Icon,
-} from '@ui-kitten/components';
+import { IconRegistry, ApplicationProvider } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import useBackgroundColor from 'hooks/useBackgroundColor';
-import MeScreen from 'screens/me';
+import MainScreen from 'screens/main';
 import SettingsScreen from 'screens/settings';
 
-const MeStack = createStackNavigator();
-const MeStackScreen = () => (
-  <MeStack.Navigator headerMode="none">
-    <MeStack.Screen name="Me" component={MeScreen} />
-  </MeStack.Navigator>
-);
+// const MainStack = createStackNavigator();
+// const MainStackScreen = () => (
+//   <MainStack.Navigator headerMode="none">
+//     <MainStack.Screen name="Main" component={MainScreen} />
+//   </MainStack.Navigator>
+// );
 
-const SettintsStack = createStackNavigator();
-const SettingsStackScreen = () => (
-  <SettintsStack.Navigator headerMode="none">
-    <SettintsStack.Screen name="Settings" component={SettingsScreen} />
-  </SettintsStack.Navigator>
-);
+// const SettintsStack = createStackNavigator();
+// const SettingsStackScreen = () => (
+//   <SettintsStack.Navigator headerMode="none">
+//     <SettintsStack.Screen name="Settings" component={SettingsScreen} />
+//   </SettintsStack.Navigator>
+// );
 
 // const RadioIcon = props => <Icon {...props} name="radio-outline" />;
 // const SettingsIcon = props => <Icon {...props} name="settings-2-outline" />;
@@ -77,8 +71,8 @@ const AppNavigator = () => {
   return (
     <NavigationContainer theme={navigatorTheme}>
       <MainStack.Navigator headerMode="none">
-        <MainStack.Screen name="Me" component={MeStackScreen} />
-        <MainStack.Screen name="Setting" component={SettingsStackScreen} />
+        <MainStack.Screen name="Main" component={MainScreen} />
+        {/* <MainStack.Screen name="Setting" component={SettingsStackScreen} /> */}
       </MainStack.Navigator>
     </NavigationContainer>
   );
