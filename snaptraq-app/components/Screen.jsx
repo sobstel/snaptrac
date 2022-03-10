@@ -21,13 +21,11 @@ export default function Screen({ children, topNavigation = null }) {
         </>
       )}
       <Layout
-        level="2"
+        level="1"
         style={{
           flex: 1,
           alignItems: 'center',
           justifyContent: 'start',
-          // paddingHorizontal: 15,
-          // paddingVertical: 20,
         }}
       >
         {children}

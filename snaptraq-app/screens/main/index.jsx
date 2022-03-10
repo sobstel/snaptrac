@@ -8,7 +8,9 @@ import {
   TopNavigationAction,
 } from '@ui-kitten/components';
 import useActionColor from '../../hooks/useActionColor';
-import CorePanel from './CorePanel';
+// import CorePanel from './CorePanel';
+import ActionPanel from './ActionPanel';
+import LocationPanel from './LocationPanel';
 import MapPanel from './MapPanel';
 
 const ActionIcon = props => {
@@ -17,9 +19,11 @@ const ActionIcon = props => {
 };
 
 const SettingsIcon = props => (
-  <ActionIcon {...props} name="settings-2-outline" />
+  <ActionIcon {...props} name="options-2-outline" />
 );
-const ShareIcon = props => <ActionIcon {...props} name="share-outline" />;
+const ShareIcon = props => (
+  <ActionIcon {...props} name="cloud-upload-outline" />
+);
 
 const Header = () => (
   <TopNavigation
@@ -35,8 +39,10 @@ const Header = () => (
 export default function MainScreen() {
   return (
     <Screen topNavigation={<Header />}>
-      <CorePanel />
+      {/* <CorePanel /> */}
+      <LocationPanel />
       <MapPanel />
+      <ActionPanel />
     </Screen>
   );
 }

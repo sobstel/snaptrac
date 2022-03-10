@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Provider, useDispatch } from 'react-redux';
 import AppLoading from 'expo-app-loading';
 /* eslint-disable camelcase */
 import {
@@ -20,6 +21,8 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import useBackgroundColor from 'hooks/useBackgroundColor';
 import MainScreen from 'screens/main';
 import SettingsScreen from 'screens/settings';
+import store from './store';
+import { thunks as locationThunks } from './store/location';
 
 // const MainStack = createStackNavigator();
 // const MainStackScreen = () => (
@@ -78,6 +81,20 @@ const AppNavigator = () => {
   );
 };
 
+function AppContent() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(locationThunks.checkForegroundPermissionsAsync());
+  }, [dispatch]);
+
+  return (
+    <>
+      <AppNavigator />
+    </>
+  );
+}
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     OpenSans_400Regular,
@@ -90,14 +107,14 @@ export default function App() {
   }
 
   return (
-    <>
+    <Provider store={store}>
       <StatusBar style="light" />
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={theme} customMapping={themeMapping}>
         <SafeAreaProvider>
-          <AppNavigator />
+          <AppContent />
         </SafeAreaProvider>
       </ApplicationProvider>
-    </>
+    </Provider>
   );
 }
