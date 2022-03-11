@@ -6,12 +6,16 @@
     "plugin:prettier/recommended"
   ],
   "plugins": ["react", "prettier"],
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
+    "babelOptions": {
+      "configFile": "./babel.config.js"
+    }
   },
   "rules": {
     "import/extensions": ["error", "never"],
@@ -20,10 +24,12 @@
     "prettier/prettier": [
       "error",
       {
+        "arrowParens": "always",
+        "endOfLine": "auto",
+        "printWidth": 100,
         "singleQuote": true,
-        "trailingComma": "all",
-        "arrowParens": "avoid",
-        "endOfLine": "auto"
+        "tabWidth": 2,
+        "trailingComma": "all"
       }
     ],
     "react/jsx-props-no-spreading": "off",

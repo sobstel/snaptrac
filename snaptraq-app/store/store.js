@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { reducer as locationReducer } from './location';
+import { reducer as permissionReducer } from './permission';
+import { reducer as positionLogReducer } from './positionLog';
 
 const store = configureStore({
   reducer: {
-    location: locationReducer,
+    permission: permissionReducer,
+    positionLog: positionLogReducer,
   },
 });
 

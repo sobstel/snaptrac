@@ -3,8 +3,8 @@ import React from 'react';
 // import * as Location from 'expo-location';
 import tw from 'tailwind-rn';
 import { Text } from '@ui-kitten/components';
+import useLocation from 'hooks/useLocation';
 import Tile from './Tile';
-import useLocation from '../../hooks/useLocation';
 
 // const LoadingIndicator = props => (
 //   <View style={tw('justify-center items-center')}>

@@ -21,8 +21,8 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import useBackgroundColor from 'hooks/useBackgroundColor';
 import MainScreen from 'screens/main';
 import SettingsScreen from 'screens/settings';
-import store from './store';
-import { thunks as locationThunks } from './store/location';
+import store from 'store';
+import { thunks as permissionThunks } from './store/permission';
 
 // const MainStack = createStackNavigator();
 // const MainStackScreen = () => (
@@ -85,7 +85,7 @@ function AppContent() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(locationThunks.checkForegroundPermissionsAsync());
+    dispatch(permissionThunks.checkForegroundAsync());
   }, [dispatch]);
 
   return (

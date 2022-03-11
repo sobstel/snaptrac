@@ -1,18 +1,21 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { View } from 'react-native';
 import tw from 'tailwind-rn';
-import { Button, ButtonGroup, Icon } from '@ui-kitten/components';
-import { thunks as locationThunks } from '../../store/location';
+import { Button, ButtonGroup, Icon, Spinner } from '@ui-kitten/components';
+import { selectors as positionLogSelectors, thunks as positionLogThunks } from 'store/positionLog';
 
-const CheckIcon = props => <Icon {...props} name="navigation-2" />;
-const TrackIcon = props => <Icon {...props} name="radio" />;
+const CheckIcon = (props) => <Icon {...props} name="navigation-2" />;
+const TrackIcon = (props) => <Icon {...props} name="radio" />;
 
 export default function ActionPanel() {
   const dispatch = useDispatch();
+  const positionPending = useSelector(positionLogSelectors.pending);
 
   const checkLocation = () => {
-    dispatch(locationThunks.requestCurrentLocationAsync());
+    if (!positionPending) {
+      dispatch(positionLogThunks.requestCurrentPositionAsync());
+    }
   };
 
   return (
