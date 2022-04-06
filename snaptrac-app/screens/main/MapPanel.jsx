@@ -1,21 +1,30 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { StyleSheet, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import tw from 'tailwind-rn';
-import { selectors as positionLogSelectors } from 'store/positionLog';
+import View from 'react-native-ui-lib/view';
+import { useDispatch, useSelector } from 'react-redux';
 
-// todo: it's not tile
+import {
+  selectors as positionLogSelectors,
+  thunks as positionLogThunks,
+} from '~/store/positionLog';
+
 export default function MapPanel() {
+  const dispatch = useDispatch();
+
   const activePosition = useSelector(positionLogSelectors.activePosition);
   const { latitude, longitude } = activePosition?.coords || {};
+
+  useEffect(() => {
+    dispatch(positionLogThunks.requestCurrentPositionAsync());
+  }, []);
 
   if (!latitude || !longitude) {
     return null;
   }
 
   return (
-    <View style={tw('flex-grow w-full')}>
+    <View style={{ flex: 1 }}>
       <MapView
         mapType="hybrid"
         region={{
@@ -28,7 +37,6 @@ export default function MapPanel() {
         style={{ ...StyleSheet.absoluteFillObject }}
         showsBuildings={false}
         showsCompass
-        // showsPointsOfInterest
         showsScale
         zoomEnabled
         zoomTapEnabled
