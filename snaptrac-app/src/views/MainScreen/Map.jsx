@@ -9,7 +9,7 @@ import {
   thunks as positionLogThunks,
 } from '~/store/positionLog';
 
-export default function MapPanel() {
+export default function Map() {
   const dispatch = useDispatch();
 
   const activePosition = useSelector(positionLogSelectors.activePosition);
